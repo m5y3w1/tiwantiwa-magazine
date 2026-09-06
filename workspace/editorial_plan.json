@@ -1,0 +1,26 @@
+[
+  {
+    "id": "DISPATCH-001",
+    "headline": "The Rise of Claude Code: How Terminal Agents Overlook Traditional IDEs in 2026",
+    "target_keyword": "Claude Code AI tool",
+    "search_intent": "Transactional / Informational",
+    "category": "Engineering",
+    "brief": "Analyze why Anthropic's terminal-first agent overtook IDE extensions in developer preference, citing multi-file edits, repository understanding, and efficiency metrics from engineering surveys."
+  },
+  {
+    "id": "DISPATCH-002",
+    "headline": "Zero-Cost Edge Architecture: Deploying High-Speed Magazines with Astro & Vercel",
+    "target_keyword": "zero cost static site generator architecture",
+    "search_intent": "Informational / Technical",
+    "category": "Infrastructure",
+    "brief": "Detailed architectural walkthrough of replacing dynamic CMS backends with Git-backed Markdown collections, edge CDNs, and automated CI/CD pipelines."
+  },
+  {
+    "id": "DISPATCH-003",
+    "headline": "Human Judgment + AI Reasoning: Building Resilient Developer Workflows for 2026",
+    "target_keyword": "AI developer tools workflow 2026",
+    "search_intent": "Commercial Investigation",
+    "category": "Intelligence",
+    "brief": "Examine the optimal balance between deterministic tooling (linters, type-checking, automated tests) and probabilistic AI reasoning agents in production software teams."
+  }
+]

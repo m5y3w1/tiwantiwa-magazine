@@ -1,0 +1,164 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+  articleSchema?: {
+    headline: string;
+    datePublished: string;
+    author: string;
+    image?: string;
+  };
+  isLocked?: boolean;
+}
+
+const { 
+  title = "THE CHRONICLE — Enterprise Digital Magazine", 
+  description = "Zero-cost high-performance digital publication infrastructure engineered for absolute speed and SEO dominance.",
+  image = "/images/default-og.jpg",
+  canonicalURL = Astro.url.href,
+  articleSchema,
+  isLocked = false
+} = Astro.props;
+
+const jsonLd = articleSchema ? {
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": articleSchema.headline,
+  "image": [articleSchema.image || image],
+  "datePublished": articleSchema.datePublished,
+  "author": [{
+    "@type": "Person",
+    "name": articleSchema.author
+  }]
+} : {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "The Chronicle",
+  "url": Astro.site
+};
+---
+
+<!doctype html>
+<html lang="en" class="bg-zinc-950 text-zinc-100 antialiased">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- OpenGraph / Social Meta Tags -->
+    <meta property="og:type" content={articleSchema ? "article" : "website"} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.site)} />
+
+    <!-- Structured JSON-LD Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="min-h-screen flex flex-col font-sans selection:bg-amber-500 selection:text-zinc-950">
+    
+    <!-- Top Header Ad / Sponsorship Slot -->
+    <div class="bg-zinc-900 border-b border-zinc-800 text-center py-2 px-4 text-xs text-zinc-400">
+      <span>Sponsored Infrastructure: <a href="https://vercel.com" class="text-amber-400 underline hover:text-amber-300">Deploy your zero-cost magazine instantly on Vercel & Cloudflare Edge</a></span>
+    </div>
+
+    <!-- Sticky Mobile-First Navbar -->
+    <header class="border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-md sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+        <div class="flex items-center gap-6 sm:gap-8">
+          <a href="/" class="text-xl sm:text-2xl font-bold tracking-tighter uppercase font-serif text-white hover:text-amber-400 transition-colors">
+            The Chronicle
+          </a>
+          <nav class="hidden xl:flex items-center gap-5 text-xs font-medium text-zinc-400">
+            <a href="/category/nigeria" class="hover:text-white transition-colors">🇳🇬 Nigeria</a>
+            <a href="/category/diaspora" class="hover:text-white transition-colors">🌍 Diaspora</a>
+            <a href="/category/business" class="hover:text-white transition-colors">💼 Business</a>
+            <a href="/category/technology" class="hover:text-white transition-colors">💻 Tech</a>
+            <a href="/category/culture" class="hover:text-white transition-colors">🎵 Culture</a>
+            <a href="/category/lifestyle" class="hover:text-white transition-colors">🏠 Lifestyle</a>
+            <a href="/category/people" class="hover:text-white transition-colors">🌟 People</a>
+            <a href="/category/opinions" class="hover:text-white transition-colors">💡 Opinions</a>
+          </nav>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="#subscribe" class="text-xs uppercase tracking-widest px-4 py-2 bg-amber-500 text-zinc-950 font-semibold rounded-full hover:bg-amber-400 transition-all">
+            Subscribe
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="flex-grow">
+      {isLocked ? (
+        <div class="max-w-3xl mx-auto px-4 py-32 text-center space-y-6">
+          <div class="inline-block p-3 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400 mb-2">
+            🔒 Premium Dispatch
+          </div>
+          <h1 class="text-3xl sm:text-4xl font-serif font-bold text-white">Exclusive Subscriber Content</h1>
+          <p class="text-zinc-400 max-w-lg mx-auto">
+            This article is locked behind our member payload interface. Enter your email below to instantly unlock full access to this and all future enterprise dispatches.
+          </p>
+          <div class="flex max-w-md mx-auto gap-2 pt-4">
+            <input type="email" placeholder="Enter your work email..." class="bg-zinc-900 border border-zinc-800 px-4 py-3 rounded-xl text-sm flex-grow text-white focus:outline-none focus:border-amber-500" />
+            <button class="bg-amber-500 hover:bg-amber-400 text-zinc-950 px-6 py-3 rounded-xl text-sm font-semibold transition-all">Unlock</button>
+          </div>
+        </div>
+      ) : (
+        <slot />
+      )}
+    </main>
+
+    <!-- Semantic Footer -->
+    <footer class="border-t border-zinc-800 bg-zinc-900/50 mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="space-y-4 md:col-span-2">
+          <span class="text-xl font-bold font-serif tracking-tight text-white">THE CHRONICLE</span>
+          <p class="text-sm text-zinc-400 max-w-sm">
+            Enterprise-grade digital magazine infrastructure. Engineered with Astro, Tailwind, and GitHub/Vercel edge pipelines for $0 ongoing overhead.
+          </p>
+        </div>
+        <div>
+          <h4 class="text-xs uppercase tracking-widest font-semibold text-zinc-300 mb-4">Core Sections</h4>
+          <ul class="space-y-2 text-sm text-zinc-400">
+            <li><a href="/category/nigeria" class="hover:text-white transition-colors">🇳🇬 Nigeria News & Policy</a></li>
+            <li><a href="/category/diaspora" class="hover:text-white transition-colors">🌍 Diaspora Stories</a></li>
+            <li><a href="/category/business" class="hover:text-white transition-colors">💼 Business & Money</a></li>
+            <li><a href="/category/technology" class="hover:text-white transition-colors">💻 Technology & AI</a></li>
+            <li><a href="/category/culture" class="hover:text-white transition-colors">🎵 Culture & Entertainment</a></li>
+            <li><a href="/category/lifestyle" class="hover:text-white transition-colors">🏠 Lifestyle & Living</a></li>
+            <li><a href="/category/people" class="hover:text-white transition-colors">🌟 People & Profiles</a></li>
+            <li><a href="/category/opinions" class="hover:text-white transition-colors">💡 Ideas & Opinions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs uppercase tracking-widest font-semibold text-zinc-300 mb-4">Governance</h4>
+          <ul class="space-y-2 text-sm text-zinc-400">
+            <li><a href="/sitemap-index.xml" class="hover:text-white transition-colors">XML Sitemap</a></li>
+            <li><a href="https://github.com" target="_blank" rel="noreferrer" class="hover:text-white transition-colors">GitHub Repository</a></li>
+            <li><a href="/admin" class="hover:text-white transition-colors">AI Approval Pipeline</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 border-t border-zinc-800/60 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500">
+        <p>&copy; {new Date().getFullYear()} The Chronicle. All rights reserved.</p>
+        <p>Zero-Cost Enterprise Architecture.</p>
+      </div>
+    </footer>
+  </body>
+</html>

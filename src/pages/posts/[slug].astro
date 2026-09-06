@@ -1,0 +1,87 @@
+---
+import Layout from '../../components/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = import.meta.glob('../../../content/published/*.md');
+  const paths = [];
+
+  for (const path in posts) {
+    const slug = path.split('/').pop()?.replace('.md', '');
+    const resolver = posts[path];
+    const post = await resolver();
+
+    paths.push({
+      params: { slug },
+      props: { post },
+    });
+  }
+
+  return paths;
+}
+
+const { post } = Astro.props;
+const { Content } = post;
+const isLocked = post.frontmatter.is_premium === true;
+---
+
+<Layout 
+  title={`${post.frontmatter.title} — The Chronicle`} 
+  description={post.frontmatter.description}
+  articleSchema={{
+    headline: post.frontmatter.title,
+    datePublished: post.frontmatter.date,
+    author: post.frontmatter.author,
+    image: post.frontmatter.cover_image
+  }}
+  isLocked={isLocked}
+>
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="space-y-6 text-center max-w-3xl mx-auto mb-12">
+      <div class="flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-widest text-amber-400">
+        <span>{post.frontmatter.category}</span>
+        <span class="text-zinc-600">&bull;</span>
+        <span>{new Date(post.frontmatter.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+      </div>
+      <h1 class="text-4xl sm:text-6xl font-serif font-bold text-white tracking-tight leading-tight">
+        {post.frontmatter.title}
+      </h1>
+      <p class="text-lg sm:text-xl text-zinc-400 leading-relaxed font-serif italic">
+        {post.frontmatter.description}
+      </p>
+      <div class="pt-4 flex items-center justify-center gap-3 text-xs uppercase tracking-wider text-zinc-500">
+        <span>By <strong class="text-zinc-300">{post.frontmatter.author}</strong></span>
+      </div>
+    </div>
+
+    <!-- Affiliate Matrix Injection Block if present -->
+    {post.frontmatter.affiliate_link && (
+      <div class="mb-10 p-4 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-between text-xs sm:text-sm">
+        <span class="text-zinc-400">Featured Sponsor Resource linked in this dispatch:</span>
+        <a href={post.frontmatter.affiliate_link} target="_blank" rel="sponsored noreferrer" class="text-amber-400 hover:text-amber-300 font-semibold underline">
+          Access Partner Offer &rarr;
+        </a>
+      </div>
+    )}
+
+    <div class="h-96 w-full rounded-2xl bg-gradient-to-br from-zinc-800 to-zinc-900 border border-zinc-800 mb-16 flex items-center justify-center relative overflow-hidden">
+      <span class="font-serif text-xl text-zinc-600 tracking-widest uppercase">Cover Asset: {post.frontmatter.cover_image}</span>
+    </div>
+
+    <div class="prose prose-invert prose-amber max-w-none font-serif text-lg leading-relaxed text-zinc-300 space-y-6">
+      <Content />
+    </div>
+
+    <div class="mt-16 pt-8 border-t border-zinc-800 flex items-center justify-between">
+      <a href="/" class="text-xs uppercase tracking-widest text-amber-400 hover:text-amber-300 font-semibold transition-colors">
+        &larr; Back to Feed
+      </a>
+      <div class="flex gap-2">
+        {post.frontmatter.tags?.map((tag: string) => (
+          <span class="text-xs px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 font-sans">
+            #{tag}
+          </span>
+        ))}
+      </div>
+    </div>
+  </article>
+</Layout>

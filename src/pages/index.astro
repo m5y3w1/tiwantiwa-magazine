@@ -1,0 +1,121 @@
+---
+import Layout from '../components/Layout.astro';
+
+const posts = await import.meta.glob('../../../content/published/*.md');
+const postEntries = await Promise.all(
+  Object.entries(posts).map(async ([path, resolver]) => {
+    const post = await resolver();
+    return {
+      ...(post as any),
+      file: path,
+    };
+  })
+);
+
+const sortedPosts = postEntries.sort((a, b) => 
+  new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf()
+);
+
+const featuredPost = sortedPosts[0];
+const recentPosts = sortedPosts.slice(1);
+---
+
+<Layout title="The Chronicle — Enterprise Digital Magazine">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    
+    <!-- Hero Featured Grid -->
+    {featuredPost && (
+      <section class="mb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-zinc-900/40 border border-zinc-800/80 rounded-2xl p-6 sm:p-10 hover:border-zinc-700 transition-all">
+          <div class="lg:col-span-7 space-y-6">
+            <div class="flex items-center gap-4 text-xs font-semibold uppercase tracking-widest text-amber-400">
+              <span>{featuredPost.frontmatter.category}</span>
+              <span class="text-zinc-600">&bull;</span>
+              <span class="text-zinc-400">{new Date(featuredPost.frontmatter.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight leading-tight">
+              <a href={`/posts/${featuredPost.file.split('/').pop()?.replace('.md', '')}`} class="hover:text-amber-300 transition-colors">
+                {featuredPost.frontmatter.title}
+              </a>
+            </h1>
+            <p class="text-zinc-300 text-base sm:text-lg leading-relaxed line-clamp-3">
+              {featuredPost.frontmatter.description}
+            </p>
+            <div class="flex items-center justify-between pt-4">
+              <span class="text-xs uppercase tracking-wider text-zinc-400 font-medium">By {featuredPost.frontmatter.author}</span>
+              <a href={`/posts/${featuredPost.file.split('/').pop()?.replace('.md', '')}`} class="inline-flex items-center gap-2 text-sm font-semibold text-amber-400 hover:text-amber-300 transition-colors">
+                Read Dispatch &rarr;
+              </a>
+            </div>
+          </div>
+          <div class="lg:col-span-5 h-72 sm:h-96 rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-900 border border-zinc-800 flex items-center justify-center overflow-hidden relative">
+            <span class="font-serif text-2xl text-zinc-600 tracking-widest uppercase">Cover Asset</span>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Masonry Feed & Sponsorship Sidebar -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      
+      <!-- Masonry Feed (8 Cols) -->
+      <div class="lg:col-span-8 space-y-10">
+        <div class="border-b border-zinc-800 pb-4 flex items-center justify-between">
+          <h2 class="text-xl font-bold uppercase tracking-wider font-serif text-white">Recent Dispatches</h2>
+          <span class="text-xs text-zinc-500 uppercase tracking-widest">Published Feed</span>
+        </div>
+
+        <div class="columns-1 sm:columns-2 gap-6 space-y-6">
+          {recentPosts.map(post => {
+            const slug = post.file.split('/').pop()?.replace('.md', '');
+            return (
+              <article class="break-inside-avoid bg-zinc-900/30 border border-zinc-800/80 rounded-xl p-6 hover:border-zinc-700 transition-all group flex flex-col justify-between">
+                <div class="space-y-4">
+                  <div class="text-xs font-semibold uppercase tracking-widest text-amber-400">
+                    {post.frontmatter.category}
+                  </div>
+                  <h3 class="text-xl font-serif font-bold text-white group-hover:text-amber-300 transition-colors">
+                    <a href={`/posts/${slug}`}>{post.frontmatter.title}</a>
+                  </h3>
+                  <p class="text-sm text-zinc-400 leading-relaxed">
+                    {post.frontmatter.description}
+                  </p>
+                </div>
+                <div class="pt-6 mt-6 border-t border-zinc-800/60 flex items-center justify-between text-xs text-zinc-500">
+                  <span>{new Date(post.frontmatter.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                  <span>{post.frontmatter.author}</span>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+
+      <!-- Mid-Content / Sidebar Ad & Affiliate Slot (4 Cols) -->
+      <aside class="lg:col-span-4 space-y-8">
+        <div class="bg-zinc-900/40 border border-zinc-800/80 rounded-2xl p-6 space-y-4">
+          <div class="text-[10px] uppercase tracking-widest text-zinc-500 font-semibold">Sponsored Slot / Native Ad</div>
+          <h3 class="text-base font-bold text-white font-serif">Enterprise Cloud Infrastructure & Zero-Cost CMS</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            Scale your digital magazine across 300+ edge locations with zero database maintenance and lightning-fast TTFB.
+          </p>
+          <a href="https://vercel.com" target="_blank" rel="noreferrer" class="block w-full py-2.5 text-center bg-zinc-800 hover:bg-zinc-700 text-white rounded-xl text-xs font-semibold uppercase tracking-wider transition-all">
+            Learn More
+          </a>
+        </div>
+
+        <div class="bg-gradient-to-br from-amber-500/10 via-zinc-900/40 to-zinc-900/60 border border-amber-500/20 rounded-2xl p-6 space-y-4">
+          <h3 class="text-sm font-bold uppercase tracking-widest text-white">AI Approval Pipeline Status</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            Drafts deposited into <code class="text-amber-300 font-mono">/content/drafts/</code> await manual administrative validation prior to edge publishing.
+          </p>
+          <div class="bg-zinc-950 p-3 rounded-lg font-mono text-xs text-amber-400 border border-zinc-800">
+            node scripts/approval_pipeline.mjs list
+          </div>
+        </div>
+      </aside>
+
+    </div>
+
+  </div>
+</Layout>
