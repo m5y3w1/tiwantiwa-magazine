@@ -5,7 +5,7 @@ author: "tiwantiwa.com Editorial Board"
 date: "2026-09-04"
 categories: ["diaspora", "technology", "business"]
 description: "How the Nigerian diaspora is moving beyond traditional remittances to build angel networks, venture syndicates, and digital infrastructure back home."
-draft: true
+draft: false
 ---
 
 For decades, the economic relationship between Nigeria and its citizens abroad has been defined by a single metric: remittances. Flowing steadily through formal and informal channels, upwards of $20 billion annually has served as the vital financial floor sustaining millions of households through school fees, healthcare, and family support. 
