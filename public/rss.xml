@@ -64,6 +64,13 @@
       <description><![CDATA[Digital diagnostics, mobile pharmacies, and virtual clinics are expanding specialized medical access to underserved Nigerian communities.]]></description>
     </item>
     <item>
+      <title><![CDATA[Human Judgment + AI Reasoning: Building Resilient Developer Workflows for 2026]]></title>
+      <link>https://tiwantiwa.com/posts/human-ai-workflow/</link>
+      <guid>https://tiwantiwa.com/posts/human-ai-workflow/</guid>
+      <pubDate>Thu, 03 Sep 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Why the most effective engineering teams combine deterministic tooling with probabilistic AI reasoning agents rather than relying on AI alone.]]></description>
+    </item>
+    <item>
       <title><![CDATA[The Japa Paradox: Balancing Brain Drain with Global Knowledge Networks]]></title>
       <link>https://tiwantiwa.com/posts/japa-paradox/</link>
       <guid>https://tiwantiwa.com/posts/japa-paradox/</guid>
@@ -90,13 +97,6 @@
       <guid>https://tiwantiwa.com/posts/nollywood-global-streaming-economics/</guid>
       <pubDate>Wed, 09 Sep 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[How global streaming giants and independent Nigerian production studios are rewriting the economics of African cinema.]]></description>
-    </item>
-    <item>
-      <title><![CDATA[Testing Secure Narrow Tools]]></title>
-      <link>https://tiwantiwa.com/posts/test-secure-dispatch/</link>
-      <guid>https://tiwantiwa.com/posts/test-secure-dispatch/</guid>
-      <pubDate>Sat, 05 Sep 2026 23:34:19 GMT</pubDate>
-      <description><![CDATA[Testing permission levels for write operations.]]></description>
     </item>
   </channel>
 </rss>

@@ -6,6 +6,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { getCachedResponse, setCachedResponse, rateLimitedFetch } from './ai_cache.mjs';
 
 const ROOT_DIR = process.cwd();
 const DRAFTS_DIR = path.join('/home/earth/digital-magazine', 'content', 'drafts');
