@@ -5,7 +5,7 @@ author: "tiwantiwa.com Editorial Board"
 date: "2026-09-09"
 categories: ["technology","nigeria","opinions"]
 description: "Autonomous study groups, AI coding assistants, and open-source models are empowering university students across Nigeria to build global-grade software."
-cover_image: "/images/ai-education-nigerian-universities.jpg"
+cover_image: "/images/ai-education-nigerian-universities.svg"
 is_premium: false
 ---
 

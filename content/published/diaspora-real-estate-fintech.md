@@ -5,7 +5,7 @@ author: "tiwantiwa.com Editorial Board"
 date: "2026-09-09"
 categories: ["diaspora","business","lifestyle"]
 description: "Escrow APIs, digital title verification, and transparent construction tracking are finally solving the diaspora property trust dilemma."
-cover_image: "/images/diaspora-real-estate-fintech.jpg"
+cover_image: "/images/diaspora-real-estate-fintech.svg"
 is_premium: false
 ---
 

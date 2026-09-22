@@ -5,7 +5,7 @@ author: "tiwantiwa.com Editorial Board"
 date: "2026-09-09"
 categories: ["technology","business","people"]
 description: "Digital diagnostics, mobile pharmacies, and virtual clinics are expanding specialized medical access to underserved Nigerian communities."
-cover_image: "/images/healthcare-tech-nigeria-telemedicine.jpg"
+cover_image: "/images/healthcare-tech-nigeria-telemedicine.svg"
 is_premium: false
 ---
 

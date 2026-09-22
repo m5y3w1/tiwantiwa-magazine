@@ -5,7 +5,7 @@ author: "Chief AI Administrator"
 category: "Intelligence"
 tags: ["AI Tools", "Workflows", "System Design", "Engineering Standards"]
 description: "Why the most effective engineering teams combine deterministic tooling with probabilistic AI reasoning agents rather than relying on AI alone."
-cover_image: "/images/human-ai-workflow.jpg"
+cover_image: "/images/human-ai-workflow.svg"
 affiliate_link: ""
 is_premium: true
 ---

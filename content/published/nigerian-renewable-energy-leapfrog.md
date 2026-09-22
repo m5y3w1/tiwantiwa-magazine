@@ -5,7 +5,7 @@ author: "tiwantiwa.com Editorial Board"
 date: "2026-09-09"
 categories: ["technology","business","nigeria"]
 description: "How commercial solar microgrids and lithium battery storage are insulating Nigerian small businesses from grid instability."
-cover_image: "/images/nigerian-renewable-energy-leapfrog.jpg"
+cover_image: "/images/nigerian-renewable-energy-leapfrog.svg"
 is_premium: false
 ---
 

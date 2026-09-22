@@ -5,7 +5,7 @@ author: "tiwantiwa.com Editorial Board"
 date: "2026-09-09"
 categories: ["culture","business"]
 description: "How global streaming giants and independent Nigerian production studios are rewriting the economics of African cinema."
-cover_image: "/images/nollywood-global-streaming-economics.jpg"
+cover_image: "/images/nollywood-global-streaming-economics.svg"
 is_premium: false
 ---
 

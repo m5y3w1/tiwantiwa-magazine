@@ -5,7 +5,7 @@ author: "Editorial Board"
 category: "Infrastructure"
 tags: ["Publishing", "Zero-Cost", "Vercel"]
 description: "How to run an enterprise-grade web magazine with zero ongoing software or hosting overhead."
-cover_image: "/images/blueprint.jpg"
+cover_image: "/images/blueprint.svg"
 affiliate_link: ""
 is_premium: false
 ---
