@@ -63,8 +63,8 @@ const isLocked = post.frontmatter.is_premium === true;
       </div>
     )}
 
-    <div class="h-96 w-full rounded-2xl bg-gradient-to-br from-zinc-800 to-zinc-900 border border-zinc-800 mb-16 flex items-center justify-center relative overflow-hidden">
-      <span class="font-serif text-xl text-zinc-600 tracking-widest uppercase">Cover Asset: {post.frontmatter.cover_image}</span>
+    <div class="h-96 w-full rounded-2xl bg-zinc-900 border border-zinc-800 mb-16 overflow-hidden shadow-2xl relative">
+      <img src={post.frontmatter.cover_image} alt={post.frontmatter.title} class="w-full h-full object-cover" />
     </div>
 
     <div class="prose prose-invert prose-amber max-w-none font-serif text-lg leading-relaxed text-zinc-300 space-y-6">
