@@ -2,53 +2,49 @@
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#050508" />
-      <stop offset="50%" stop-color="#09090b" />
-      <stop offset="100%" stop-color="#121216" />
+      <stop offset="100%" stop-color="#18181b" />
     </linearGradient>
-    <linearGradient id="cyber-glow" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#34d399" />
-      <stop offset="50%" stop-color="#fbbf24" />
-      <stop offset="100%" stop-color="#38bdf8" />
+    <linearGradient id="gold-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#f59e0b" />
     </linearGradient>
   </defs>
 
-  <!-- Cybernetic Dark Base -->
+  <!-- Base Background -->
   <rect width="1200" height="630" fill="url(#bg)" />
 
-  <!-- Cybercode Matrix Grid Lines -->
-  <g opacity="0.15" stroke="#34d399" stroke-width="1">
-    <path d="M 0 100 L 1200 100 M 0 200 L 1200 200 M 0 300 L 1200 300 M 0 400 L 1200 400 M 0 500 L 1200 500" />
-    <path d="M 200 0 L 200 630 M 400 0 L 400 630 M 600 0 L 600 630 M 800 0 L 800 630 M 1000 0 L 1000 630" />
+  <!-- QR Code Structural Box (Left Side) -->
+  <g transform="translate(80, 195)">
+    <rect x="20" y="20" width="200" height="200" fill="#18181b" stroke="#27272a" stroke-width="2" rx="12" />
+    <g transform="translate(10, 10)">
+      <rect x="40" y="40" width="70" height="70" fill="#ffffff" rx="4" /><rect x="50" y="50" width="50" height="50" fill="#09090b" rx="2" /><rect x="60" y="60" width="30" height="30" fill="#34d399" rx="1" /><rect x="130" y="40" width="70" height="70" fill="#ffffff" rx="4" /><rect x="140" y="50" width="50" height="50" fill="#09090b" rx="2" /><rect x="150" y="60" width="30" height="30" fill="#34d399" rx="1" /><rect x="40" y="130" width="70" height="70" fill="#ffffff" rx="4" /><rect x="50" y="140" width="50" height="50" fill="#09090b" rx="2" /><rect x="60" y="150" width="30" height="30" fill="#34d399" rx="1" /><rect x="120" y="40" width="10" height="10" fill="#ffffff" rx="1" /><rect x="110" y="60" width="10" height="10" fill="#ffffff" rx="1" /><rect x="110" y="70" width="10" height="10" fill="#ffffff" rx="1" /><rect x="120" y="70" width="10" height="10" fill="#ffffff" rx="1" /><rect x="120" y="80" width="10" height="10" fill="#ffffff" rx="1" /><rect x="120" y="90" width="10" height="10" fill="#ffffff" rx="1" /><rect x="50" y="110" width="10" height="10" fill="#ffffff" rx="1" /><rect x="60" y="110" width="10" height="10" fill="#ffffff" rx="1" /><rect x="70" y="110" width="10" height="10" fill="#ffffff" rx="1" /><rect x="90" y="110" width="10" height="10" fill="#ffffff" rx="1" /><rect x="100" y="110" width="10" height="10" fill="#ffffff" rx="1" /><rect x="110" y="110" width="10" height="10" fill="#ffffff" rx="1" /><rect x="120" y="110" width="10" height="10" fill="#ffffff" rx="1" /><rect x="130" y="110" width="10" height="10" fill="#ffffff" rx="1" /><rect x="140" y="110" width="10" height="10" fill="#ffffff" rx="1" /><rect x="150" y="110" width="10" height="10" fill="#ffffff" rx="1" /><rect x="170" y="110" width="10" height="10" fill="#ffffff" rx="1" /><rect x="180" y="110" width="10" height="10" fill="#ffffff" rx="1" /><rect x="190" y="110" width="10" height="10" fill="#ffffff" rx="1" /><rect x="40" y="120" width="10" height="10" fill="#ffffff" rx="1" /><rect x="50" y="120" width="10" height="10" fill="#ffffff" rx="1" /><rect x="70" y="120" width="10" height="10" fill="#ffffff" rx="1" /><rect x="90" y="120" width="10" height="10" fill="#ffffff" rx="1" /><rect x="110" y="120" width="10" height="10" fill="#ffffff" rx="1" /><rect x="130" y="120" width="10" height="10" fill="#ffffff" rx="1" /><rect x="140" y="120" width="10" height="10" fill="#ffffff" rx="1" /><rect x="170" y="120" width="10" height="10" fill="#ffffff" rx="1" /><rect x="180" y="120" width="10" height="10" fill="#ffffff" rx="1" /><rect x="120" y="130" width="10" height="10" fill="#ffffff" rx="1" /><rect x="140" y="130" width="10" height="10" fill="#ffffff" rx="1" /><rect x="190" y="130" width="10" height="10" fill="#ffffff" rx="1" /><rect x="110" y="140" width="10" height="10" fill="#ffffff" rx="1" /><rect x="120" y="140" width="10" height="10" fill="#ffffff" rx="1" /><rect x="140" y="140" width="10" height="10" fill="#ffffff" rx="1" /><rect x="150" y="140" width="10" height="10" fill="#ffffff" rx="1" /><rect x="160" y="140" width="10" height="10" fill="#ffffff" rx="1" /><rect x="170" y="140" width="10" height="10" fill="#ffffff" rx="1" /><rect x="190" y="140" width="10" height="10" fill="#ffffff" rx="1" /><rect x="110" y="150" width="10" height="10" fill="#ffffff" rx="1" /><rect x="150" y="150" width="10" height="10" fill="#ffffff" rx="1" /><rect x="160" y="150" width="10" height="10" fill="#ffffff" rx="1" /><rect x="180" y="150" width="10" height="10" fill="#ffffff" rx="1" /><rect x="110" y="160" width="10" height="10" fill="#ffffff" rx="1" /><rect x="120" y="160" width="10" height="10" fill="#ffffff" rx="1" /><rect x="130" y="160" width="10" height="10" fill="#ffffff" rx="1" /><rect x="150" y="160" width="10" height="10" fill="#ffffff" rx="1" /><rect x="160" y="160" width="10" height="10" fill="#ffffff" rx="1" /><rect x="170" y="160" width="10" height="10" fill="#ffffff" rx="1" /><rect x="180" y="160" width="10" height="10" fill="#ffffff" rx="1" /><rect x="190" y="160" width="10" height="10" fill="#ffffff" rx="1" /><rect x="120" y="170" width="10" height="10" fill="#ffffff" rx="1" /><rect x="140" y="170" width="10" height="10" fill="#ffffff" rx="1" /><rect x="150" y="170" width="10" height="10" fill="#ffffff" rx="1" /><rect x="160" y="170" width="10" height="10" fill="#ffffff" rx="1" /><rect x="170" y="170" width="10" height="10" fill="#ffffff" rx="1" /><rect x="180" y="170" width="10" height="10" fill="#ffffff" rx="1" /><rect x="150" y="180" width="10" height="10" fill="#ffffff" rx="1" /><rect x="110" y="190" width="10" height="10" fill="#ffffff" rx="1" /><rect x="120" y="190" width="10" height="10" fill="#ffffff" rx="1" /><rect x="140" y="190" width="10" height="10" fill="#ffffff" rx="1" /><rect x="160" y="190" width="10" height="10" fill="#ffffff" rx="1" /><rect x="170" y="190" width="10" height="10" fill="#ffffff" rx="1" />
+    </g>
   </g>
 
-  <!-- Glowing Cyber Accent Bar -->
-  <rect x="80" y="80" width="1040" height="4" fill="url(#cyber-glow)" rx="2" />
-
-  <!-- Category & Cybercode Metadata Header -->
-  <g transform="translate(80, 130)">
-    <rect x="0" y="0" width="240" height="38" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1.5" />
-    <text x="18" y="24" fill="#34d399" font-family="monospace" font-size="13" font-weight="bold" letter-spacing="2">SYS_NODE // NIGERIA</text>
+  <!-- Category Badge -->
+  <g transform="translate(320, 195)">
+    <rect x="0" y="0" width="180" height="34" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1.5" />
+    <text x="16" y="22" fill="#34d399" font-family="monospace" font-size="12" font-weight="bold" letter-spacing="2">NODE // NIGERIA</text>
   </g>
 
-  <!-- Narrative Title Painting the Picture -->
-  <g transform="translate(80, 240)">
-    <text x="0" y="0" fill="#ffffff" font-family="serif" font-size="46" font-weight="bold" width="1040" letter-spacing="-0.5">
-      <tspan x="0" dy="0">Beyond Remittances: How Diaspora PropTech is Secur...</tspan>
+  <!-- Narrative Dispatch Title (Right Side) -->
+  <g transform="translate(320, 260)">
+    <text x="0" y="0" fill="#ffffff" font-family="serif" font-size="40" font-weight="bold" width="800" letter-spacing="-0.5">
+      <tspan x="0" dy="0">Beyond Remittances: How Diaspora PropTech ...</tspan>
     </text>
   </g>
 
-  <!-- Rich Story Narrative Tags Painting the Context -->
-  <g transform="translate(80, 420)">
-    <rect x="0" y="0" width="1040" height="48" rx="8" fill="#18181b" stroke="#27272a" stroke-width="1" />
-    <text x="24" y="30" fill="#fbbf24" font-family="monospace" font-size="14" font-weight="bold" letter-spacing="1.5">
+  <!-- Narrative Context Tags -->
+  <g transform="translate(320, 390)">
+    <text x="0" y="0" fill="url(#gold-glow)" font-family="monospace" font-size="13" font-weight="bold" letter-spacing="1.5">
       #NIGERIA   #DIGITAL   #EDITION
     </text>
   </g>
 
-  <!-- Cybercode Footer Stamp -->
-  <g transform="translate(80, 540)">
-    <text x="0" y="0" font-family="monospace" font-size="13" fill="#71717a" letter-spacing="1.5">
-      <tspan fill="#34d399">[</tspan>TIWANTIWA CYBERCODE ENGINE<tspan fill="#34d399">]</tspan> // SECURE SEC-2026
+  <!-- Footer Brand Stamp -->
+  <g transform="translate(80, 550)">
+    <text x="0" y="0" font-family="monospace" font-size="12" fill="#71717a" letter-spacing="1.5">
+      <tspan fill="#34d399">[</tspan>TIWANTIWA QR INTEL ENGINE<tspan fill="#34d399">]</tspan> // SCAN FOR FULL DISPATCH
     </text>
   </g>
 </svg>
