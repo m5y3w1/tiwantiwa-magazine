@@ -5,7 +5,7 @@ author: "tiwantiwa.com Editorial Board"
 date: "2026-09-08"
 categories: ["business", "technology", "nigeria"]
 description: "How regulatory evolution, embedded finance, and AI are redefining Nigeria's financial technology landscape."
-draft: true
+draft: false
 ---
 
 Nigeria's fintech revolution transformed how millions access financial services. From mobile money agents on every street corner to seamless instant transfers powered by NIBSS, the baseline of digital banking has risen dramatically. 
