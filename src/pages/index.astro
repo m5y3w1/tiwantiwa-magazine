@@ -73,30 +73,18 @@ const recentPosts = posts.slice(1);
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-zinc-800 pb-4 gap-4">
         <h2 class="text-xl font-bold uppercase tracking-wider font-serif text-white">Recent Dispatches</h2>
         
-        <!-- Quick Category Filter List -->
-        <div class="flex items-center gap-1.5 overflow-x-auto pb-2 sm:pb-0 scrollbar-none text-xs">
-          <span class="text-zinc-500 font-mono mr-1">Filter:</span>
-          <a href="/" class="px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/80 text-emerald-400 font-semibold hover:bg-emerald-900/60 transition-colors flex items-center gap-1">
-            <span>⚡</span> All
-          </a>
-          <a href="/category/nigeria" class="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 font-semibold hover:border-zinc-700 transition-colors flex items-center gap-1">
-            <span>🇳🇬</span> Nigeria
-          </a>
-          <a href="/category/diaspora" class="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 font-semibold hover:border-zinc-700 transition-colors flex items-center gap-1">
-            <span>🌍</span> Diaspora
-          </a>
-          <a href="/category/technology" class="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 font-semibold hover:border-zinc-700 transition-colors flex items-center gap-1">
-            <span>💻</span> Tech
-          </a>
-          <a href="/category/business" class="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 font-semibold hover:border-zinc-700 transition-colors flex items-center gap-1">
-            <span>💼</span> Business
-          </a>
-          <a href="/category/culture" class="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 font-semibold hover:border-zinc-700 transition-colors flex items-center gap-1">
-            <span>🎵</span> Culture
-          </a>
-          <a href="/category/opinions" class="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 font-semibold hover:border-zinc-700 transition-colors flex items-center gap-1">
-            <span>💡</span> Opinions
-          </a>
+        <!-- Responsive Category Filter Dropdown / List -->
+        <div class="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-end text-xs">
+          <span class="text-zinc-500 font-mono">Filter:</span>
+          <select onchange="if(this.value) window.location.href=this.value;" class="bg-zinc-900 border border-zinc-800 text-zinc-300 rounded-xl px-3 py-1.5 focus:outline-none focus:border-emerald-500 font-sans cursor-pointer">
+            <option value="/">⚡ All Dispatches</option>
+            <option value="/category/nigeria">🇳🇬 Nigeria</option>
+            <option value="/category/diaspora">🌍 Diaspora</option>
+            <option value="/category/technology">💻 Technology</option>
+            <option value="/category/business">💼 Business</option>
+            <option value="/category/culture">🎵 Culture</option>
+            <option value="/category/opinions">💡 Opinions</option>
+          </select>
         </div>
       </div>
 
