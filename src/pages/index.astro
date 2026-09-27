@@ -17,32 +17,6 @@ const recentPosts = posts.slice(1);
 <Layout title="tiwantiwa — Enterprise Digital Magazine">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
     
-    <!-- Quick Category Filter Pills with Icons -->
-    <div class="flex items-center gap-2 overflow-x-auto pb-6 mb-8 border-b border-zinc-800/80 scrollbar-none">
-      <span class="text-xs uppercase tracking-widest text-zinc-500 font-mono mr-2">Filter:</span>
-      <a href="/" class="px-3.5 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-800/80 text-emerald-400 text-xs font-semibold hover:bg-emerald-900/60 transition-colors flex items-center gap-1.5">
-        <span>⚡</span> All Dispatches
-      </a>
-      <a href="/category/nigeria" class="px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 text-xs font-semibold hover:border-zinc-700 transition-colors flex items-center gap-1.5">
-        <span>🇳🇬</span> Nigeria
-      </a>
-      <a href="/category/diaspora" class="px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 text-xs font-semibold hover:border-zinc-700 transition-colors flex items-center gap-1.5">
-        <span>🌍</span> Diaspora
-      </a>
-      <a href="/category/technology" class="px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 text-xs font-semibold hover:border-zinc-700 transition-colors flex items-center gap-1.5">
-        <span>💻</span> Technology
-      </a>
-      <a href="/category/business" class="px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 text-xs font-semibold hover:border-zinc-700 transition-colors flex items-center gap-1.5">
-        <span>💼</span> Business
-      </a>
-      <a href="/category/culture" class="px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 text-xs font-semibold hover:border-zinc-700 transition-colors flex items-center gap-1.5">
-        <span>🎵</span> Culture
-      </a>
-      <a href="/category/opinions" class="px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 text-xs font-semibold hover:border-zinc-700 transition-colors flex items-center gap-1.5">
-        <span>💡</span> Opinions
-      </a>
-    </div>
-    
     <!-- Hero Featured Grid -->
     {featuredPost && (
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 pb-16 border-b border-zinc-800">
@@ -94,11 +68,36 @@ const recentPosts = posts.slice(1);
       </div>
     )}
 
-    <!-- Recent Dispatches & Game of Life Section -->
+    <!-- Recent Dispatches & Filter Section -->
     <div class="space-y-8">
-      <div class="flex items-center justify-between border-b border-zinc-800 pb-4">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-zinc-800 pb-4 gap-4">
         <h2 class="text-xl font-bold uppercase tracking-wider font-serif text-white">Recent Dispatches</h2>
-        <span class="text-xs text-zinc-500 font-mono">AUTONOMOUS ENGINE v3.2</span>
+        
+        <!-- Quick Category Filter List -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-2 sm:pb-0 scrollbar-none text-xs">
+          <span class="text-zinc-500 font-mono mr-1">Filter:</span>
+          <a href="/" class="px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/80 text-emerald-400 font-semibold hover:bg-emerald-900/60 transition-colors flex items-center gap-1">
+            <span>⚡</span> All
+          </a>
+          <a href="/category/nigeria" class="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 font-semibold hover:border-zinc-700 transition-colors flex items-center gap-1">
+            <span>🇳🇬</span> Nigeria
+          </a>
+          <a href="/category/diaspora" class="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 font-semibold hover:border-zinc-700 transition-colors flex items-center gap-1">
+            <span>🌍</span> Diaspora
+          </a>
+          <a href="/category/technology" class="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 font-semibold hover:border-zinc-700 transition-colors flex items-center gap-1">
+            <span>💻</span> Tech
+          </a>
+          <a href="/category/business" class="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 font-semibold hover:border-zinc-700 transition-colors flex items-center gap-1">
+            <span>💼</span> Business
+          </a>
+          <a href="/category/culture" class="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 font-semibold hover:border-zinc-700 transition-colors flex items-center gap-1">
+            <span>🎵</span> Culture
+          </a>
+          <a href="/category/opinions" class="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 font-semibold hover:border-zinc-700 transition-colors flex items-center gap-1">
+            <span>💡</span> Opinions
+          </a>
+        </div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
