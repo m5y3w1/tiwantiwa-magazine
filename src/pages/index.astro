@@ -12,92 +12,131 @@ const posts = Object.entries(postsGlob).map(([path, post]: [string, any]) => {
 
 const featuredPost = posts[0];
 const recentPosts = posts.slice(1);
+
+const categories = [
+  { name: 'Nigeria', slug: 'nigeria', icon: '🇳🇬', count: posts.filter(p => p.category?.toLowerCase() === 'nigeria' || p.categories?.includes('Nigeria')).length || 4 },
+  { name: 'Diaspora', slug: 'diaspora', icon: '🌍', count: 3 },
+  { name: 'Business', slug: 'business', icon: '💼', count: 2 },
+  { name: 'Tech', slug: 'technology', icon: '💻', count: 3 },
+  { name: 'Culture', slug: 'culture', icon: '🎵', count: 2 },
+  { name: 'Lifestyle', slug: 'lifestyle', icon: '🏠', count: 2 },
+  { name: 'People', slug: 'people', icon: '🌟', count: 2 },
+  { name: 'Opinions', slug: 'opinions', icon: '💡', count: 2 },
+];
 ---
 
-<Layout title="tiwantiwa — Enterprise Digital Magazine">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    
-    <!-- Hero Featured Grid -->
+<Layout title="tiwantiwa — Stories, ideas and conversations about Nigeria and Nigerians everywhere">
+  
+  <!-- Hero / Brand Introduction -->
+  <section class="border-b border-zinc-800/85 bg-gradient-to-b from-zinc-900/60 to-zinc-950 py-16 sm:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 max-w-4xl">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono uppercase tracking-widest">
+        <span>🇳🇬 Independent Digital Publication</span>
+      </div>
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold text-white tracking-tight leading-[1.1]">
+        tiwantiwa
+      </h1>
+      <p class="text-xl sm:text-2xl font-serif text-zinc-300 italic max-w-2xl mx-auto leading-relaxed">
+        "Stories, ideas and conversations about Nigeria and Nigerians everywhere."
+      </p>
+      <div class="pt-4 flex flex-wrap items-center justify-center gap-3 text-xs uppercase tracking-widest text-zinc-400 font-mono">
+        <span>Nigeria</span>
+        <span class="text-amber-400">&bull;</span>
+        <span>Diaspora</span>
+        <span class="text-amber-400">&bull;</span>
+        <span>Culture</span>
+        <span class="text-amber-400">&bull;</span>
+        <span>Ideas</span>
+        <span class="text-amber-400">&bull;</span>
+        <span>People</span>
+        <span class="text-amber-400">&bull;</span>
+        <span>Stories</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20">
+
+    <!-- Featured Story -->
     {featuredPost && (
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 pb-16 border-b border-zinc-800">
-        <div class="lg:col-span-7 flex flex-col justify-center space-y-6">
-          <div class="flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-amber-400">
-            <span>{featuredPost.categories?.[0] || featuredPost.category || 'Featured'}</span>
-            <span class="text-zinc-600">&bull;</span>
-            <span>{new Date(featuredPost.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
-            <span class="text-zinc-600">&bull;</span>
-            <span class="text-zinc-400 font-mono text-[11px]">~4 min read</span>
-          </div>
-          <h1 class="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight leading-tight">
-            <a href={`/posts/${featuredPost.slug}/`} class="hover:text-amber-400 transition-colors">
-              {featuredPost.title}
-            </a>
-          </h1>
-          <p class="text-zinc-300 text-base sm:text-lg leading-relaxed line-clamp-3">
-            {featuredPost.description}
-          </p>
-          <div class="pt-2 flex items-center justify-between">
-            <span class="text-xs uppercase tracking-wider text-zinc-500 font-sans">
-              By <strong class="text-zinc-300">{featuredPost.author}</strong>
-            </span>
-            <a href={`/posts/${featuredPost.slug}/`} class="text-xs uppercase tracking-widest text-amber-400 font-semibold hover:text-amber-300 transition-colors">
-              Read Dispatch &rarr;
-            </a>
-          </div>
+      <section class="space-y-6">
+        <div class="flex items-center justify-between border-b border-zinc-800 pb-4">
+          <h2 class="text-xs uppercase tracking-widest font-mono text-amber-400 font-semibold flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+            Featured Story
+          </h2>
+          <span class="text-xs text-zinc-500 font-mono">Editor's Pick</span>
         </div>
 
-        <!-- Conway's Game of Life Live Widget replacing static cover -->
-        <div class="lg:col-span-5 h-80 sm:h-96 rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800 flex flex-col items-center justify-center relative overflow-hidden group p-8 text-center space-y-4">
-          <div class="absolute top-3 left-3 z-10 flex items-center gap-2 px-2.5 py-1 rounded bg-zinc-950/80 border border-zinc-800 text-[10px] font-mono text-amber-400">
-            <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
-            <span>SYSTEM: EDGE_NODE_SECURE</span>
-          </div>
-          <div class="space-y-2">
-            <span class="text-xs font-mono uppercase tracking-widest text-amber-400">tiwantiwa.com v3.2</span>
-            <h3 class="text-2xl font-serif font-bold text-white tracking-tight">Autonomous Edge Publisher</h3>
-            <p class="text-xs text-zinc-400 max-w-sm mx-auto leading-relaxed">
-              Zero-cost static architecture hooked directly to automated markdown ingestion, editorial approval pipelines, and cryptographic sitemaps.
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-zinc-900/30 border border-zinc-800/80 rounded-3xl p-6 sm:p-10 hover:border-zinc-700 transition-all">
+          <div class="lg:col-span-7 space-y-6">
+            <div class="flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-amber-400 font-mono">
+              <span>{featuredPost.categories?.[0] || featuredPost.category || 'Nigeria'}</span>
+              <span class="text-zinc-600">&bull;</span>
+              <span>{new Date(featuredPost.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+              <span class="text-zinc-600">&bull;</span>
+              <span class="text-zinc-400">By {featuredPost.author || 'Editorial Board'}</span>
+            </div>
+            <h3 class="text-2xl sm:text-4xl font-serif font-bold text-white tracking-tight leading-tight">
+              <a href={`/posts/${featuredPost.slug}/`} class="hover:text-amber-300 transition-colors">
+                {featuredPost.title}
+              </a>
+            </h3>
+            <p class="text-zinc-300 text-base sm:text-lg leading-relaxed line-clamp-3">
+              {featuredPost.description}
             </p>
+            <div class="pt-2">
+              <a href={`/posts/${featuredPost.slug}/`} class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-amber-400 text-zinc-950 font-semibold text-xs uppercase tracking-widest hover:bg-amber-300 transition-all">
+                Read Story &rarr;
+              </a>
+            </div>
           </div>
-          <div class="pt-2 flex items-center gap-2 text-[10px] font-mono text-zinc-500">
-            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800">Astro 4</span>
-            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800">Tailwind v4</span>
-            <span class="px-2 py-1 rounded bg-zinc-900 border border-zinc-800">Zero SaaS Cost</span>
+
+          <div class="lg:col-span-5 h-72 sm:h-80 rounded-2xl bg-gradient-to-br from-zinc-900 via-zinc-950 to-amber-950/20 border border-zinc-800 flex flex-col items-center justify-center p-8 text-center space-y-4">
+            <span class="text-4xl">🇳🇬</span>
+            <div class="space-y-1">
+              <h4 class="text-lg font-serif font-bold text-white">{featuredPost.title}</h4>
+              <p class="text-xs text-zinc-400">A Tiwantiwa Special Dispatch</p>
+            </div>
+            <a href={`/posts/${featuredPost.slug}/`} class="text-xs text-amber-400 font-mono underline hover:text-amber-300">
+              Explore full narrative &rarr;
+            </a>
           </div>
         </div>
-      </div>
+      </section>
     )}
 
-    <!-- Recent Dispatches & Filter Section -->
-    <div class="space-y-8">
-      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-zinc-800 pb-4 gap-4">
-        <h2 class="text-xl font-bold uppercase tracking-wider font-serif text-white">Recent Dispatches</h2>
-        
-        <!-- Responsive Category Filter Dropdown / List -->
-        <div class="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-end text-xs">
-          <span class="text-zinc-500 font-mono">Filter:</span>
-          <select onchange="if(this.value) window.location.href=this.value;" class="bg-zinc-900 border border-zinc-800 text-zinc-300 rounded-xl px-3 py-1.5 focus:outline-none focus:border-emerald-500 font-sans cursor-pointer">
-            <option value="/">⚡ All Dispatches</option>
-            <option value="/category/nigeria">🇳🇬 Nigeria</option>
-            <option value="/category/diaspora">🌍 Diaspora</option>
-            <option value="/category/technology">💻 Technology</option>
-            <option value="/category/business">💼 Business</option>
-            <option value="/category/culture">🎵 Culture</option>
-            <option value="/category/opinions">💡 Opinions</option>
-          </select>
-        </div>
+    <!-- Categories Section -->
+    <section class="space-y-6">
+      <div class="border-b border-zinc-800 pb-4">
+        <h2 class="text-xs uppercase tracking-widest font-mono text-zinc-400 font-semibold">Explore Sections</h2>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+        {categories.map((cat) => (
+          <a href={`/category/${cat.slug}`} class="flex flex-col items-center justify-center p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 hover:border-amber-400/50 hover:bg-zinc-900 transition-all group text-center space-y-2">
+            <span class="text-2xl">{cat.icon}</span>
+            <span class="text-xs font-semibold uppercase tracking-wider text-white group-hover:text-amber-400 transition-colors">{cat.name}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Latest Stories -->
+    <section class="space-y-8">
+      <div class="flex items-center justify-between border-b border-zinc-800 pb-4">
+        <h2 class="text-xl font-bold uppercase tracking-wider font-serif text-white">Latest Stories</h2>
+        <span class="text-xs text-zinc-500 font-mono">Curated Dispatches</span>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {recentPosts.map((post: any) => (
-          <article class="flex flex-col justify-between p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 hover:border-zinc-700 transition-all group">
+          <article class="flex flex-col justify-between p-6 rounded-3xl bg-zinc-900/40 border border-zinc-800/80 hover:border-zinc-700 transition-all group">
             <div class="space-y-4">
-              <div class="flex items-center justify-between text-xs font-semibold uppercase tracking-widest text-amber-400">
+              <div class="flex items-center justify-between text-xs font-semibold uppercase tracking-widest text-amber-400 font-mono">
                 <span>{post.categories?.[0] || post.category || 'Dispatch'}</span>
-                <span class="text-zinc-600">&bull;</span>
-                <span class="text-zinc-400 font-mono text-[11px]">~3 min read</span>
+                <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
               </div>
-              <h3 class="text-xl font-serif font-bold text-white group-hover:text-amber-300 transition-colors">
+              <h3 class="text-xl font-serif font-bold text-white group-hover:text-amber-300 transition-colors leading-snug">
                 <a href={`/posts/${post.slug}/`}>
                   {post.title}
                 </a>
@@ -106,18 +145,34 @@ const recentPosts = posts.slice(1);
                 {post.description}
               </p>
             </div>
-            <div class="pt-6 mt-6 border-t border-zinc-800/60 flex items-center justify-between text-xs text-zinc-500">
-              <span>{post.author}</span>
-              <a href={`/posts/${post.slug}/`} class="text-amber-400 font-semibold hover:text-amber-300">
+            <div class="pt-6 mt-6 border-t border-zinc-800/60 flex items-center justify-between text-xs text-zinc-500 font-mono">
+              <span>{post.author || 'Editorial'}</span>
+              <a href={`/posts/${post.slug}/`} class="text-amber-400 font-semibold hover:text-amber-300 uppercase tracking-widest text-[10px]">
                 Read &rarr;
               </a>
             </div>
           </article>
         ))}
       </div>
-    </div>
+    </section>
+
+    <!-- Newsletter / Subscribe Anchor -->
+    <section id="subscribe" class="rounded-3xl bg-gradient-to-r from-zinc-900 via-zinc-900 to-amber-950/30 border border-zinc-800 p-8 sm:p-12 text-center space-y-6">
+      <div class="max-w-2xl mx-auto space-y-3">
+        <span class="text-amber-400 font-mono text-xs uppercase tracking-widest">The Tiwantiwa Dispatch</span>
+        <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white">Get stories that matter delivered to your inbox.</h3>
+        <p class="text-sm text-zinc-300">
+          Unflinching journalism, cultural insights, and diaspora business intelligence from Nigeria and across the globe.
+        </p>
+      </div>
+      <form onsubmit="event.preventDefault(); alert('Thank you for subscribing to Tiwantiwa!');" class="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
+        <input type="email" required placeholder="Enter your email address" class="flex-grow bg-zinc-950 border border-zinc-800 rounded-full px-5 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-amber-400" />
+        <button type="submit" class="px-6 py-3 rounded-full bg-amber-400 text-zinc-950 font-semibold text-xs uppercase tracking-widest hover:bg-amber-300 transition-all">
+          Subscribe
+        </button>
+      </form>
+    </section>
 
   </div>
-
 
 </Layout>
