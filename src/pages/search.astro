@@ -1,0 +1,97 @@
+---
+import Layout from '../components/Layout.astro';
+
+const postsGlob = import.meta.glob('../content/published/*.md', { eager: true });
+const posts = Object.entries(postsGlob).map(([path, post]: [string, any]) => {
+  const slug = path.split('/').pop()?.replace('.md', '') || '';
+  return {
+    slug,
+    ...post.frontmatter,
+  };
+}).sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
+---
+
+<Layout title="Search & Dispatch Explorer — TiwaNtiwa" description="Search and explore dispatches across Nigeria, Diaspora, Technology, and Culture.">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="space-y-6 text-center max-w-3xl mx-auto mb-12">
+      <div class="inline-block px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/80 text-emerald-400 text-xs font-mono uppercase tracking-widest">
+        Dispatch Index
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-serif font-bold text-white tracking-tight">
+        Search &amp; Explore
+      </h1>
+      <p class="text-zinc-400 text-base sm:text-lg">
+        Instantly search titles, summaries, and tags across our entire publication archive.
+      </p>
+
+      <!-- Search Input -->
+      <div class="pt-4">
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Search dispatches by title, keyword, or tag..." 
+          class="w-full bg-zinc-900 border border-zinc-800 rounded-2xl px-5 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500 font-sans text-sm shadow-xl transition-all"
+        />
+      </div>
+    </div>
+
+    <!-- Results Grid -->
+    <div id="resultsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {posts.map((post: any) => (
+        <article 
+          class="dispatch-card flex flex-col justify-between p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition-all group"
+          data-title={post.title.toLowerCase()}
+          data-desc={post.description.toLowerCase()}
+          data-category={(post.category || '').toLowerCase()}
+          data-tags={(post.tags || []).join(' ').toLowerCase()}
+        >
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-xs font-semibold uppercase tracking-widest text-emerald-400">
+              <span>{post.category || 'Dispatch'}</span>
+              <span class="text-zinc-500 font-mono text-[11px]">{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+            </div>
+            <h3 class="text-xl font-serif font-bold text-white group-hover:text-emerald-300 transition-colors">
+              <a href={`/posts/${post.slug}/`}>
+                {post.title}
+              </a>
+            </h3>
+            <p class="text-sm text-zinc-400 leading-relaxed line-clamp-2">
+              {post.description}
+            </p>
+          </div>
+          <div class="pt-4 mt-4 border-t border-zinc-800/60 flex items-center justify-between text-xs text-zinc-500">
+            <div class="flex gap-1.5 flex-wrap">
+              {post.tags?.slice(0, 2).map((t: string) => (
+                <span class="px-2 py-0.5 rounded bg-zinc-950 border border-zinc-800 text-zinc-400 text-[10px] font-mono">#{t}</span>
+              ))}
+            </div>
+            <a href={`/posts/${post.slug}/`} class="text-emerald-400 font-semibold hover:text-emerald-300">
+              Read &rarr;
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const cards = document.querySelectorAll('.dispatch-card');
+
+    searchInput?.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase().trim();
+      cards.forEach(card => {
+        const title = card.getAttribute('data-title') || '';
+        const desc = card.getAttribute('data-desc') || '';
+        const cat = card.getAttribute('data-category') || '';
+        const tags = card.getAttribute('data-tags') || '';
+
+        if (title.includes(term) || desc.includes(term) || cat.includes(term) || tags.includes(term)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</Layout>
