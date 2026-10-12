@@ -101,6 +101,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tiwantiwa.com/posts/human-ai-workflow/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tiwantiwa.com/posts/ingested-clickfix-attacks-are-tricking-mac-and-windows-user/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://tiwantiwa.com/posts/japa-paradox/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -117,11 +127,6 @@
   </url>
   <url>
     <loc>https://tiwantiwa.com/posts/nollywood-global-streaming-economics/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tiwantiwa.com/posts/test-secure-dispatch/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
